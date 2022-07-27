@@ -3,16 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SuperheroeComponent } from './components/superheroe/superheroe.component';
+import { DetallesSuperheroeComponent } from './components/detalles-superheroe/detalles-superheroe.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import { SpinnerComponent } from './shared/spinner/spinner.component'; 
+import { SpinnerInterceptorInterceptor } from './shared/spinner/spinner-interceptor.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SuperheroeComponent,
+    DetallesSuperheroeComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    MatCardModule, 
+  
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

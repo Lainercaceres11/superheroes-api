@@ -1,0 +1,16 @@
+<div class="text-center" *ngIf="">
+  <div class="spinner-border" role="status">
+  </div>
+</div>
+<h2 class="title">Superheroes</h2>
+<div class="container" *ngFor="let item of listData; index as i">
+    <div class="card mx-auto mt-5" style="width: 18rem;" >
+        <img class="card-img-top img-fluid" [src]="item.images.md" alt="Imagen de superheroes">
+        <div class="card-body">
+          <h5 class="card-title">FirstAppearance: {{item.biography.firstAppearance}}</h5>
+          <p class="card-text">Publisher: {{item.biography.publisher}}</p>
+          <p class="card-text">Occupation: {{item.work.occupation}}</p>
+          <button class="btn boton btn-info btn-lg pt-3 text-center" [routerLink]="['/superheroe', i]">Ver detalles</button>
+        </div>
+      </div>
+</div>  
